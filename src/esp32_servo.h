@@ -13,7 +13,7 @@ class NormalServo: public Servo {
     }
     void set_degree(int angle) {
         float pulse_width = this->MIN_PULSE_WIDTH + (this->MAX_PULSE_WIDTH - this->MIN_PULSE_WIDTH) * angle / 180;
-        int duty = (pulse_width - MIN_PULSE_WIDTH) / (MAX_PULSE_WIDTH - MIN_PULSE_WIDTH);
+        int duty = (pulse_width - this->MIN_PULSE_WIDTH) / (this->MAX_PULSE_WIDTH - this->MIN_PULSE_WIDTH);
         ledcWrite(this->channel, pow(2, this->PWM_RESOLUTION) * duty);
     }
     private:
