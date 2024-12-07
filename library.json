@@ -1,6 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/platformio/platformio-core/develop/platformio/assets/schema/library.json",
-  "name": "platformio-library-template",
+  "name": "roboken-esp32",
   "version": "0.1.0",
   "description": "",
   "keywords": [],
@@ -8,6 +8,12 @@
     "type": "git",
     "url": "https://github.com/NiiRoboKen/platformio-library-template.git"
   },
+  "dependencies":[
+    {
+      "name": "roboken-interface",
+      "version": "https://github.com/NiiRoboKen/roboken-insterface/archive/refs/heads/main.zip"
+    }
+  ],
   "frameworks": "*",
   "platforms": "*",
   "headers": []
