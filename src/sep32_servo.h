@@ -1,4 +1,0 @@
-#ifndef ESP32_ROBOKEN_INTERFACE
-#define ESP32_ROBOKEN_INTERFACE
-
-#endif
