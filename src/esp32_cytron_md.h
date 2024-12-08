@@ -1,8 +1,7 @@
 #ifndef ESP32_CYTRON_MD_H_
 #define ESP32_CYTRON_MD_H_
 
-//#include <interface.h>
-#include <motor.h>
+#include <interface.h>
 #include <Arduino.h>
 
 class CytronMd : public Motor {
