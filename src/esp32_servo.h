@@ -1,6 +1,6 @@
 #ifndef ESP32_SERVO_H_
 #define ESP32_SERVO_H_
-#include <servo.h>
+#include <interface.h>
 #include <Arduino.h>
 
 class NormalServo : public Servo {
