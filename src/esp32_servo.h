@@ -1,9 +1,9 @@
 #ifndef ESP32_SERVO_H_
 #define ESP32_SERVO_H_
-#include <interface.h>
+#include <servo.h>
 #include <Arduino.h>
 
-class NormalServo: public Servo {
+class NormalServo : public Servo {
     public:
     NormalServo(uint8_t channel, uint8_t pin) {
         this->channel = channel;
@@ -24,9 +24,9 @@ class NormalServo: public Servo {
     uint8_t channel;
     uint8_t pin;
 };
+/*
+class Sg90 : public NormalServo {};
 
-class Sg90: public NormalServo {};
-
-class Mg996r: public NormalServo {};
-
+class Mg996r : public NormalServo {};
+*/
 #endif

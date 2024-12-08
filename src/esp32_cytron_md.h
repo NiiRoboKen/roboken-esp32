@@ -1,10 +1,11 @@
 #ifndef ESP32_CYTRON_MD_H_
 #define ESP32_CYTRON_MD_H_
 
-#include <interface.h>
+//#include <interface.h>
+#include <motor.h>
 #include <Arduino.h>
 
-class CytronMd: public Motor {
+class CytronMd : public Motor {
     public:
     CytronMd(uint8_t channel, uint8_t dir_pin) {
         this->channel = channel;
