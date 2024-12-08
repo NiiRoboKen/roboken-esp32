@@ -1,5 +1,5 @@
-#ifndef ESP32_ROBOKEN_INTERFACE
-#define ESP32_ROBOKEN_INTERFACE
+#ifndef ESP32_SERVO_H_
+#define ESP32_SERVO_H_
 #include <interface.h>
 #include <Arduino.h>
 
