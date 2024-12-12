@@ -8,18 +8,17 @@ class NormalServo : public Servo {
     NormalServo(uint8_t channel, uint8_t pin) {
         this->channel = channel;
         this->pin = pin;
-        this->sutate = Sutate::BEFORE;
-
+        this->sutate = State::BEFORE;
     }
-    enum class Sutate{
+    enum class State{
         BEFORE,
         AFTER
-    }
+    };
     void set_degree(int angle) {
-        if(this->sutate == Sutate::BEFORE) {
+        if(this->sutate == State::BEFORE) {
             ledcSetup(this->channel, this->FREQ, PWM_RESOLUTION);
             ledcAttachPin(this->pin, this->channel);
-            this->sutate = AFTER;
+            this->sutate = State::AFTER;
         }
         float pulse_width = this->MIN_PULSE_WIDTH + (this->MAX_PULSE_WIDTH - this->MIN_PULSE_WIDTH) * angle / 180;
         int duty = (pulse_width - this->MIN_PULSE_WIDTH) / (this->MAX_PULSE_WIDTH - this->MIN_PULSE_WIDTH);
@@ -30,7 +29,7 @@ class NormalServo : public Servo {
     const int PWM_RESOLUTION = 16; // bit
     const float MIN_PULSE_WIDTH = 0.5; // ms
     const float MAX_PULSE_WIDTH = 2.4; // ms
-    Sutate sutate;
+    State sutate;
     uint8_t channel;
     uint8_t pin;
 };
