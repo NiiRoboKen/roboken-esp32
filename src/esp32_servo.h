@@ -8,7 +8,7 @@ class NormalServo : public Servo {
     NormalServo(uint8_t channel, uint8_t pin) {
         this->channel = channel;
         this->pin = pin;
-        this->sutate = BEFORE;
+        this->sutate = Sutate::BEFORE;
 
     }
     enum class Sutate{
@@ -16,7 +16,7 @@ class NormalServo : public Servo {
         AFTER
     }
     void set_degree(int angle) {
-        if(this->sutate == BEFORE) {
+        if(this->sutate == Sutate::BEFORE) {
             ledcSetup(this->channel, this->FREQ, PWM_RESOLUTION);
             ledcAttachPin(this->pin, this->channel);
             this->sutate = AFTER;
