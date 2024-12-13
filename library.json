@@ -11,7 +11,7 @@
   "dependencies":[
     {
       "name": "roboken-interface",
-      "version": "https://github.com/NiiRoboKen/roboken-insterface/archive/refs/heads/main.zip"
+      "version": "https://github.com/NiiRoboKen/roboken-interface/archive/refs/heads/main.zip"
     }
   ],
   "frameworks": "*",
