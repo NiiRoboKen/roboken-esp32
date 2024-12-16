@@ -3,39 +3,39 @@
 #include <interface.h>
 #include <Arduino.h>
 
-class NormalServo : public Servo {
+class PwmServo : public Servo {
     public:
-    NormalServo(uint8_t channel, uint8_t pin) {
-        this->channel = channel;
-        this->pin = pin;
-        this->sutate = State::BEFORE;
-    }
-    enum class State{
-        BEFORE,
-        AFTER
-    };
-    void set_degree(int angle) {
-        if(this->sutate == State::BEFORE) {
-            ledcSetup(this->channel, this->FREQ, PWM_RESOLUTION);
-            ledcAttachPin(this->pin, this->channel);
-            this->sutate = State::AFTER;
+        PwmServo(uint8_t channel, uint32_t freq, uint32_t pwm_resolution, uint32_t min_pulse_width, uint32_t max_pulse_width) {
+            this->channel = channel;
+            this->FREQ = freq;
+            this->pwm_resolution = pwm_resolution;
+            this->MIN_PULSE_WIDTH = min_pulse_width;
+            this->MAX_PULSE_WIDTH = max_pulse_width;
         }
-        float pulse_width = this->MIN_PULSE_WIDTH + (this->MAX_PULSE_WIDTH - this->MIN_PULSE_WIDTH) * angle / 180;
-        int duty = (pulse_width - this->MIN_PULSE_WIDTH) / (this->MAX_PULSE_WIDTH - this->MIN_PULSE_WIDTH);
-        ledcWrite(this->channel, pow(2, this->PWM_RESOLUTION) * duty);
-    }
-    private:
-    const int FREQ = 50; // Hz
-    const int PWM_RESOLUTION = 16; // bit
-    const float MIN_PULSE_WIDTH = 0.5; // ms
-    const float MAX_PULSE_WIDTH = 2.4; // ms
-    State sutate;
-    uint8_t channel;
-    uint8_t pin;
-};
-/*
-class Sg90 : public NormalServo {};
+        static PwmServo sg90(uint8_t channel) {
+            return PwmServo(channel, PwmServo::FREQ, PwmServo::PWM_RESOLUTION, PwmServo::MIN_PULSE_WIDTH, PwmServo::MAX_PULSE_WIDTH);
+        }
+        void brgin(uint8_t pin){
+            ledcSetup(this->channel, this->FREQ, this->PWM_RESOLUTION);
+            ledcAttachPin(pin, this->channel); 
+        }
+        void set_degree(int angle) {
+            float pulse_width = this->min_pulse_width + (this->max_pulse_width - this->min_pulse_width) * angle / 180;
+            int duty = (pulse_width - this->min_pulse_width) / (this->max_pulse_width - this->min_pulse_width);
+            ledcWrite(this->channel, pow(2, this->pwm_resolution) * duty);
+        }
+        const uint32_t FREQ = 50; // Hz
+        const uint32_t PWM_RESOLUTION = 16; // bit
+        const uint32_t MIN_PULSE_WIDTH = 500; // us
+        const uint32_t MAX_PULSE_WIDTH = 2400; // us
 
-class Mg996r : public NormalServo {};
-*/
+    private:
+        const uint32_t freq; // Hz
+        const uint32_t pwm_resolution; // bit
+        const uint32_t min_pulse_width; // us
+        const uint32_t max_pulse_width; // us
+        uint8_t channel;
+
+};
+
 #endif
