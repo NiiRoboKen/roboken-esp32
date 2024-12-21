@@ -7,10 +7,10 @@ class PwmServo : public Servo {
     public:
         PwmServo(uint8_t channel, uint32_t freq, uint32_t pwm_resolution, uint32_t min_pulse_width, uint32_t max_pulse_width) {
             this->channel = channel;
-            this->FREQ = freq;
+            this->freq = freq;
             this->pwm_resolution = pwm_resolution;
-            this->MIN_PULSE_WIDTH = min_pulse_width;
-            this->MAX_PULSE_WIDTH = max_pulse_width;
+            this->min_pulse_width = min_pulse_width;
+            this->max_pulse_width = max_pulse_width;
         }
         static PwmServo sg90(uint8_t channel) {
             return PwmServo(channel, PwmServo::FREQ, PwmServo::PWM_RESOLUTION, PwmServo::MIN_PULSE_WIDTH, PwmServo::MAX_PULSE_WIDTH);
@@ -30,10 +30,10 @@ class PwmServo : public Servo {
         const uint32_t MAX_PULSE_WIDTH = 2400; // us
 
     private:
-        const uint32_t freq; // Hz
-        const uint32_t pwm_resolution; // bit
-        const uint32_t min_pulse_width; // us
-        const uint32_t max_pulse_width; // us
+        uint32_t freq; // Hz
+        uint32_t pwm_resolution; // bit
+        uint32_t min_pulse_width; // us
+        uint32_t max_pulse_width; // us
         uint8_t channel;
 
 };
