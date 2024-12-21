@@ -15,7 +15,7 @@ class PwmServo : public Servo {
         static PwmServo sg90(uint8_t channel) {
             return PwmServo(channel, PwmServo::FREQ, PwmServo::PWM_RESOLUTION, PwmServo::MIN_PULSE_WIDTH, PwmServo::MAX_PULSE_WIDTH);
         }
-        void brgin(uint8_t pin){
+        void begin(uint8_t pin){
             ledcSetup(this->channel, this->FREQ, this->pwm_resolution);
             ledcAttachPin(pin, this->channel); 
         }
