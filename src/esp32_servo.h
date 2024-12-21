@@ -16,7 +16,7 @@ class PwmServo : public Servo {
             return PwmServo(channel, PwmServo::FREQ, PwmServo::PWM_RESOLUTION, PwmServo::MIN_PULSE_WIDTH, PwmServo::MAX_PULSE_WIDTH);
         }
         void brgin(uint8_t pin){
-            ledcSetup(this->channel, this->FREQ, this->PWM_RESOLUTION);
+            ledcSetup(this->channel, this->FREQ, this->pwm_resolution);
             ledcAttachPin(pin, this->channel); 
         }
         void set_degree(int angle) {
@@ -24,10 +24,10 @@ class PwmServo : public Servo {
             int duty = (pulse_width - this->min_pulse_width) / (this->max_pulse_width - this->min_pulse_width);
             ledcWrite(this->channel, pow(2, this->pwm_resolution) * duty);
         }
-        const uint32_t FREQ = 50; // Hz
-        const uint32_t PWM_RESOLUTION = 16; // bit
-        const uint32_t MIN_PULSE_WIDTH = 500; // us
-        const uint32_t MAX_PULSE_WIDTH = 2400; // us
+        static const uint32_t FREQ = 50; // Hz
+        static const uint32_t PWM_RESOLUTION = 16; // bit
+        static const uint32_t MIN_PULSE_WIDTH = 500; // us
+        static const uint32_t MAX_PULSE_WIDTH = 2400; // us
 
     private:
         uint32_t freq; // Hz
