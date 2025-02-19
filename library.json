@@ -10,11 +10,11 @@
   },
   "dependencies":[
     {
-      "name": "roboken-interface",
-      "version": "https://github.com/NiiRoboKen/roboken-interface/archive/refs/heads/main.zip"
+      "name": "roboken-std",
+      "version": "https://github.com/NiiRoboKen/roboken-std/archive/refs/heads/develop.zip"
     }
   ],
   "frameworks": "*",
   "platforms": "*",
-  "headers": ["roboken_interface.h"]
+  "headers": ["roboken_std.hpp"]
 }

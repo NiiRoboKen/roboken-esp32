@@ -1,7 +1,6 @@
-#ifndef ESP32_CYTRON_MD_H_
-#define ESP32_CYTRON_MD_H_
+#pragma onece
 
-#include <interface.h>
+#include <roboken_std.hpp>
 #include <Arduino.h>
 
 class CytronMd : public Motor {
@@ -12,15 +11,13 @@ class CytronMd : public Motor {
     }
     void cw(uint16_t speed) {
         digitalWrite(this->dir_pin, LOW);
-        ledcWrite(channel, this->channel);
+        ledcWrite(this->channel, speed);
     }
     void ccw(uint16_t speed) {
-        digitalWrite(this->dir_pin, LOW);
-        ledcWrite(channel, this->channel);
+        digitalWrite(this->dir_pin, HIGH);
+        ledcWrite(this->channel, speed);
     }
     private:
     uint8_t channel;
     uint8_t dir_pin;
 };
-
-#endif
