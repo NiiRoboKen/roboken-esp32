@@ -3,7 +3,7 @@
 #include <roboken_std.hpp>
 #include <Arduino.h>
 
-class CytronMd : public Motor {
+class CytronMd : public roboken::Motor {
     public:
     CytronMd(uint8_t channel, uint8_t dir_pin) {
         this->channel = channel;
