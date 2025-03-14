@@ -1,7 +1,8 @@
 #pragma onece
 
-#include <roboken_std.hpp>
 #include <Arduino.h>
+#undef PI
+#include <roboken_std.hpp>
 
 class CytronMd : public roboken::Motor {
     public:
