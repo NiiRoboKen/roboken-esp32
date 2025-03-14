@@ -1,4 +1,4 @@
-# Roboken STD
+# Roboken ESP32
 新居浜高専ロボット研究部謹製ライブラリ
 
 # 使用するにあたって
@@ -9,6 +9,8 @@
 build_flags = -std=gnu++14
 build_unflags = -std=gnu++11
 ```
+## Roboken STD
+https://github.com/NiiRoboKen/roboken-std
 
 ## ライブラリの作りかた
 https://docs.platformio.org/en/latest/librarymanager/creating.html
